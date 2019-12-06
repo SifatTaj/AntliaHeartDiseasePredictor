@@ -113,17 +113,3 @@ def logistic_regression(x_train, y_train, x_test, y_test, learningRate, iteratio
     y_prediction = predict(parameters["weight"], parameters["bias"], x_test)
 
     print("Manuel Test Accuracy: {:.2f}%".format((100 - np.mean(np.abs(y_prediction - y_test)) * 100)))
-
-# KNN
-from sklearn.neighbors import KNeighborsClassifier
-
-knn = KNeighborsClassifier(n_neighbors=2)  # k=2
-knn.fit(x_train.T, y_train.T)
-prediction = knn.predict(x_test.T)
-
-print(x_test.T)
-print(x_test)
-
-print(prediction)
-
-# print("{} NN Score: {:.2f}%".format(2, knn.score(x_test.T, y_test.T) * 100))
