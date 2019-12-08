@@ -1,6 +1,6 @@
 from sklearn.neighbors import KNeighborsClassifier
 
-import model
+from core import model
 
 knn = KNeighborsClassifier(n_neighbors=2)  # k=2
 knn.fit(model.x_train.T, model.y_train.T)

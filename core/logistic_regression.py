@@ -1,6 +1,6 @@
 from sklearn.linear_model import LogisticRegression
 
-from model import x_train, y_train, x_test, y_test
+from core.model import x_train, y_train, x_test, y_test
 
 lr = LogisticRegression()
 lr.fit(x_train.T, y_train.T)

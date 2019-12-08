@@ -1,4 +1,4 @@
-from model import x_train, y_train, x_test, y_test
+from core.model import x_train, y_train, x_test, y_test
 
 from sklearn.ensemble import RandomForestClassifier
 

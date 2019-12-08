@@ -1,23 +1,54 @@
-<MyGrid>:
-    GridLayout:
-        cols:1
-        size: root.width, root.height
 
-        GridLayout:
-            cols:2
+#:set tp .98
+#:set pad .065
 
-            Label:
-                text: "Name: "
+<Button>:
+    size_hint: 0.2, 0.1
 
-            TextInput:
-                multinline:False
+<Label>:
+    text_size: self.size
+    halign: 'right'
+    valign: 'middle'
+    color: 1, 1, 1, 1
+    size_hint: 0.15, 0.05
 
-            Label:
-                text: "Email: "
+<TextInput>
+    size_hint: 0.4, 0.05
 
-            TextInput:
-                multiline:False
+<FloatLayout>:
 
-        Button:
-            text:"Submit"
-            on_press: app.btn()
+    name: name
+    age: age
+
+    Label:
+        font_size: 50
+        bold: True
+        size_hint: 1, 0.05
+        halign: 'center'
+        valign: 'middle'
+        pos_hint: {"x":0, "top":tp}
+        text: "Antlia Heart Disease Predictor"
+
+    Label:
+        id:name
+        pos_hint: {"x":0, "top":tp - pad}
+        text: "Name "
+
+    TextInput:
+        pos_hint: {"x":0.2, "top":tp - pad}
+        multiline:False
+
+    Label:
+        id:age
+        pos_hint: {"x":0, "top": tp - pad * 2}
+        text: "Age "
+
+    TextInput:
+        pos_hint: {"x":0.2, "top": tp - pad * 2}
+        multiline:False
+
+    Button:
+        halign: 'center'
+        valign: 'middle'
+        text: "Predict"
+        pos_hint: {"right": .95, "top": .07}

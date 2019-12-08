@@ -1,19 +1,24 @@
+import kivy
 from kivy.app import App
-from kivy.uix.button import Button
-from kivy.uix.label import Label
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.textinput import TextInput
+from kivy.properties import ObjectProperty
+from kivy.uix.floatlayout import FloatLayout
+from kivy.core.window import Window
 from kivy.uix.widget import Widget
 
+Window.clearcolor = (.3, .3, .3, 1)
 
-class MyGrid(Widget):
-    pass
+
+# class FloatLayout(Widget):
+#     name = ObjectProperty(None)
+#
+#     def on_pressed(self):
+#         print(self.name.text)
 
 
 class MyApp(App):
     def build(self):
-        return MyGrid()
+        return FloatLayout()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     MyApp().run()

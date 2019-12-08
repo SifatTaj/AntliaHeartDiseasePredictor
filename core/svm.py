@@ -1,6 +1,6 @@
 from sklearn.svm import SVC
 
-from model import x_train, y_train, x_test, y_test
+from core.model import x_train, y_train, x_test, y_test
 
 svm = SVC(random_state = 1)
 svm.fit(x_train.T, y_train.T)
