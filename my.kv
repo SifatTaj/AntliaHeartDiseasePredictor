@@ -1,54 +1,271 @@
 
 #:set tp .98
-#:set pad .065
+#:set pad .1
+
+<ToggleButton>:
+    text_size: self.size
+    halign: 'center'
+    valign: 'middle'
 
 <Button>:
     size_hint: 0.2, 0.1
 
 <Label>:
     text_size: self.size
-    halign: 'right'
+    halign: 'center'
     valign: 'middle'
     color: 1, 1, 1, 1
-    size_hint: 0.15, 0.05
+    size_hint: 0.10, 0.06
 
 <TextInput>
-    size_hint: 0.4, 0.05
+    size_hint: 0.3, 0.05
 
-<FloatLayout>:
+<MyLayout>:
 
     name: name
     age: age
+    sex: sex
+    cp1: cp1
+    cp2: cp2
+    bp: bp
+    chol: chol
+    fbs: fbs
+    restecg: restecg
+    thalach: thalach
+    exang: exang
+    oldpeak: oldpeak
+    slope: slope
+    ca: ca
+    thal: thal
 
-    Label:
-        font_size: 50
-        bold: True
-        size_hint: 1, 0.05
-        halign: 'center'
-        valign: 'middle'
-        pos_hint: {"x":0, "top":tp}
-        text: "Antlia Heart Disease Predictor"
+    FloatLayout:
 
-    Label:
-        id:name
-        pos_hint: {"x":0, "top":tp - pad}
-        text: "Name "
+        size: root.width, root.height
 
-    TextInput:
-        pos_hint: {"x":0.2, "top":tp - pad}
-        multiline:False
+        Label:
+            font_size: 50
+            bold: True
+            size_hint: 1, 0.05
+            halign: 'center'
+            valign: 'middle'
+            pos_hint: {"x":0, "top":tp}
+            text: "Antlia Heart Disease Predictor"
 
-    Label:
-        id:age
-        pos_hint: {"x":0, "top": tp - pad * 2}
-        text: "Age "
 
-    TextInput:
-        pos_hint: {"x":0.2, "top": tp - pad * 2}
-        multiline:False
 
-    Button:
-        halign: 'center'
-        valign: 'middle'
-        text: "Predict"
-        pos_hint: {"right": .95, "top": .07}
+
+
+        Label:
+            pos_hint: {"x":0, "top":tp - pad}
+            text: "Name"
+
+        TextInput:
+            id: name
+            pos_hint: {"x":0.15, "top":tp - pad}
+            multiline:False
+
+
+
+
+
+        Label:
+            pos_hint: {"x":.5, "top": tp - pad * 1}
+            text: "Age"
+
+        TextInput:
+            id: age
+            pos_hint: {"x":0.65, "top": tp - pad * 1}
+            multiline:False
+
+
+
+
+
+        Label:
+            pos_hint: {"x":0, "top": tp - pad * 2}
+            text: "Sex "
+
+        ToggleButton:
+            id: sex
+            text: "Male"
+            state: "down"
+            group: "sex"
+            pos_hint: {"x":0.15, "top": tp - pad * 2}
+
+        ToggleButton:
+            text: "Female"
+            group: "sex"
+            pos_hint: {"x":0.35, "top": tp - pad * 2}
+
+
+
+        Label:
+            pos_hint: {"x":.5, "top": tp - pad * 2}
+            text: "BP"
+
+        TextInput:
+            id: bp
+            pos_hint: {"x":0.65, "top": tp - pad * 2}
+            multiline:False
+
+
+
+
+        Label:
+            pos_hint: {"x":0, "top": tp - pad * 3}
+            text: "Chest Pain"
+
+        ToggleButton:
+            id: cp1
+            text: "High"
+            state: "down"
+            group: "cp"
+            pos_hint: {"x":0.15, "top": tp - pad * 3}
+
+        ToggleButton:
+            id: cp2
+            text: "Medium"
+            group: "cp"
+            pos_hint: {"x":0.25, "top": tp - pad * 3}
+
+        ToggleButton:
+            text: "Low"
+            group: "cp"
+            pos_hint: {"x":0.35, "top": tp - pad * 3}
+
+
+
+
+
+
+        Label:
+            pos_hint: {"x":.5, "top": tp - pad * 3}
+            text: "Cholestoral"
+
+        TextInput:
+            id: chol
+            pos_hint: {"x":0.65, "top": tp - pad * 3}
+            multiline:False
+
+
+
+
+
+
+        Label:
+            pos_hint: {"x":0, "top":tp - pad * 4}
+            text: "Suger"
+
+        TextInput:
+            id: fbs
+            pos_hint: {"x":0.15, "top":tp - pad * 4}
+            multiline:False
+
+
+
+
+
+
+        Label:
+            pos_hint: {"x":0.5, "top":tp - pad * 4}
+            text: "ECG"
+
+        TextInput:
+            id: restecg
+            pos_hint: {"x":0.65, "top":tp - pad * 4}
+            multiline:False
+
+
+
+
+        Label:
+            pos_hint: {"x":0.5, "top":tp - pad * 5}
+            size_hint: 0.13, 0.06
+            text: "Max Heart Rate"
+
+        TextInput:
+            id: thalach
+            pos_hint: {"x":0.65, "top":tp - pad * 5}
+            multiline:False
+
+
+
+        Label:
+            pos_hint: {"x":0, "top": tp - pad * 5}
+            text: "Angina"
+
+        ToggleButton:
+            id: exang
+            text: "Yes"
+            state: "down"
+            group: "exang"
+            pos_hint: {"x":0.15, "top": tp - pad * 5}
+
+        ToggleButton:
+            text: "No"
+            group: "exang"
+            pos_hint: {"x":0.35, "top": tp - pad * 5}
+
+
+
+
+
+        Label:
+            pos_hint: {"x":0.5, "top":tp - pad * 6}
+            size_hint: 0.12, 0.06
+            text: "ST depression"
+
+        TextInput:
+            id: oldpeak
+            pos_hint: {"x":0.65, "top":tp - pad * 6}
+            multiline:False
+
+
+
+        Label:
+            pos_hint: {"x":0, "top":tp - pad * 6}
+            text: "ST Peak"
+
+        TextInput:
+            id: slope
+            pos_hint: {"x":0.15, "top":tp - pad * 6}
+            multiline:False
+
+
+
+
+
+        Label:
+            pos_hint: {"x":0.5, "top":tp - pad * 7}
+            size_hint: 0.11, 0.06
+            text: "vessels (0-3)"
+
+        TextInput:
+            id: ca
+            pos_hint: {"x":0.65, "top":tp - pad * 7}
+            multiline:False
+
+
+
+
+
+        Label:
+            pos_hint: {"x":0, "top":tp - pad * 7}
+            text: "Thal"
+
+        TextInput:
+            id: thal
+            pos_hint: {"x":0.15, "top":tp - pad * 7}
+            multiline:False
+
+
+
+
+
+
+        Button:
+            on_press: root.on_pressed()
+            halign: 'center'
+            valign: 'middle'
+            text: "Predict"
+            pos_hint: {"right": .95, "top": .1}
