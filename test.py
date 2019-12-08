@@ -1,8 +1,19 @@
 from kivy.app import App
 from kivy.uix.button import Button
+from kivy.uix.label import Label
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.textinput import TextInput
+from kivy.uix.widget import Widget
 
-class TestApp(App):
+
+class MyGrid(Widget):
+    pass
+
+
+class MyApp(App):
     def build(self):
-        return Button(text='Hello World')
+        return MyGrid()
 
-TestApp().run()
+
+if __name__ == '__main__':
+    MyApp().run()
