@@ -6,6 +6,14 @@ from kivy.core.window import Window
 from kivy.uix.widget import Widget
 from kivy.lang import Builder
 
+from core import model
+from core.d_tree import dtc
+from core.knn import knn
+from core.logistic_regression import lr
+from core.naive_bayes import nb
+from core.random_forest import rf
+from core.svm import svm
+
 Window.clearcolor = (.3, .3, .3, 1)
 Window.set_title('Antlia Heart Disease Predictor')
 
@@ -27,6 +35,7 @@ class MyLayout(Widget):
     slope = ObjectProperty(None)
     ca = ObjectProperty(None)
     thal = ObjectProperty(None)
+    result = ObjectProperty(None)
 
     def on_pressed(self):
 
@@ -79,9 +88,29 @@ class MyLayout(Widget):
             patient = patient + "2" + ","
 
         else:
-            patient = patient + "3" + ","
+            patient = patient + "3" + ",0"
 
         print(patient)
+
+        file = open("heart.csv", "a")
+        file.write(patient)
+
+        test_knn = knn.predict(model.x_test.T)
+        test_dtree = dtc.predict(model.x_test.T)
+        test_lr = lr.predict(model.x_test.T)
+        test_nb = nb.predict(model.x_test.T)
+        test_rf = rf.predict(model.x_test.T)
+        test_svm = svm.predict(model.x_test.T)
+
+        # wavg = test_knn * 88.52 + test_svm * 86.89 + test_nb * 86.89 + test_dtree * 80.33 + test_rf * 88.52 + test_lr * 86
+        wavg = test_knn + test_svm + test_nb + test_dtree + test_rf + test_lr
+        pred = wavg / 6
+
+        if pred[0] > .5:
+            self.result.text = "Result: Yes"
+        else:
+            self.result.text = "Result: No"
+
 
 
 class MyApp(App):

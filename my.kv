@@ -37,6 +37,7 @@
     slope: slope
     ca: ca
     thal: thal
+    result: result
 
     FloatLayout:
 
@@ -269,3 +270,11 @@
             valign: 'middle'
             text: "Predict"
             pos_hint: {"right": .95, "top": .1}
+
+        Label:
+            id: result
+            size_hint: 0.20, 0.06
+            font_size: 40
+            bold: True
+            pos_hint: {"x": 0, "top": .1}
+            text: "Result: "
