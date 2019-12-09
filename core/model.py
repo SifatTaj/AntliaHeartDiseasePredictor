@@ -28,7 +28,7 @@ x_data = df.drop(['target'], axis=1)
 
 x = (x_data - np.min(x_data)) / (np.max(x_data) - np.min(x_data)).values  # Normalize
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.0025, random_state=0) # 80% of our data will be train data and 20% of it will be test data
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=0) # 80% of our data will be train data and 20% of it will be test data
 
 #transpose matrices
 x_train = x_train.T

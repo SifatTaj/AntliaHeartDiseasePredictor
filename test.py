@@ -39,7 +39,7 @@ class MyLayout(Widget):
 
     def on_pressed(self):
 
-        patient = ""
+        patient = "\n"
 
         patient = patient + self.age.text + ","
         patient = patient + ("1" if self.sex.state == "down" else "0") + ","
@@ -95,6 +95,8 @@ class MyLayout(Widget):
         file = open("heart.csv", "a")
         file.write(patient)
 
+        print(model.x_test)
+
         test_knn = knn.predict(model.x_test.T)
         test_dtree = dtc.predict(model.x_test.T)
         test_lr = lr.predict(model.x_test.T)
@@ -103,10 +105,13 @@ class MyLayout(Widget):
         test_svm = svm.predict(model.x_test.T)
 
         # wavg = test_knn * 88.52 + test_svm * 86.89 + test_nb * 86.89 + test_dtree * 80.33 + test_rf * 88.52 + test_lr * 86
-        wavg = test_knn + test_svm + test_nb + test_dtree + test_rf + test_lr
+        wavg = test_knn[0] + test_svm[0] + test_nb[0] + test_dtree[0] + test_rf[0] + test_lr[0]
         pred = wavg / 6
 
-        if pred[0] > .5:
+        print(test_knn)
+        print(len(test_knn))
+
+        if test_knn[-1] > 0:
             self.result.text = "Result: Yes"
         else:
             self.result.text = "Result: No"
